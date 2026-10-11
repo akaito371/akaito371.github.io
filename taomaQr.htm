@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo mã QR</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>Tạo mã QR</h1>
+    <input type="text" id="link" placeholder="Nhập link vào đây" style="width: 300px;">
+    <button onclick="generateQR()">Tạo mã QR</button>
+    <canvas id="qrcodeCanvas" style="margin-top: 20px;"></canvas>
+
+    <script>
+        function generateQR() {
+            const link = document.getElementById('link').value;
+            const qrCodeCanvas = document.getElementById('qrcodeCanvas');
+            QRCode.toCanvas(qrCodeCanvas, link, function (error) {
+                if (error) console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>

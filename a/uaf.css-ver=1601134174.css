@@ -1,0 +1,112 @@
+				@font-face {
+					font-family: 'utm-avo';
+					src: url('9307UTM-Avo.woff2')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/9307UTM-Avo.woff2*/ format('woff2'),
+						url('9307UTM-Avo.woff')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/9307UTM-Avo.woff*/ format('woff');
+					font-display: auto;
+				}
+
+				.utm-avo{font-family: 'utm-avo' !important;}
+
+						@font-face {
+					font-family: 'bai-jamjuree';
+					src: url('9040Bai-Jamjuree.woff2')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/9040Bai-Jamjuree.woff2*/ format('woff2'),
+						url('9040Bai-Jamjuree.woff')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/9040Bai-Jamjuree.woff*/ format('woff');
+					font-display: auto;
+				}
+
+				.bai-jamjuree{font-family: 'bai-jamjuree' !important;}
+
+						@font-face {
+					font-family: 'utm-neutra';
+					src: url('1351UTM-Neutra.woff2')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/1351UTM-Neutra.woff2*/ format('woff2'),
+						url('1351UTM-Neutra.woff')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/1351UTM-Neutra.woff*/ format('woff');
+					font-display: auto;
+				}
+
+				.utm-neutra{font-family: 'utm-neutra' !important;}
+
+						@font-face {
+					font-family: 'cafe';
+					src: url('1258Cafe.woff2')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/1258Cafe.woff2*/ format('woff2'),
+						url('1258Cafe.woff')/*tpa=https://mientay1.com/wp-content/uploads/useanyfont/1258Cafe.woff*/ format('woff');
+					font-display: auto;
+				}
+
+				.cafe{font-family: 'cafe' !important;}
+
+						#giagiam{
+					font-family: 'utm-avo' !important;
+				}
+						#giam{
+					font-family: 'utm-avo' !important;
+				}
+						#giagiam2{
+					font-family: 'utm-avo' !important;
+				}
+						#giam2{
+					font-family: 'utm-avo' !important;
+				}
+						#giagiam3{
+					font-family: 'utm-avo' !important;
+				}
+						#giam3{
+					font-family: 'utm-avo' !important;
+				}
+						#giagiam4{
+					font-family: 'utm-avo' !important;
+				}
+						#giam4{
+					font-family: 'utm-avo' !important;
+				}
+						#giagiam5{
+					font-family: 'utm-avo' !important;
+				}
+						#giam5{
+					font-family: 'utm-avo' !important;
+				}
+						#giagiam6{
+					font-family: 'utm-avo' !important;
+				}
+						#giam6{
+					font-family: 'utm-avo' !important;
+				}
+						h3{
+					font-family: 'bai-jamjuree' !important;
+				}
+						#giamcf{
+					font-family: 'cafe' !important;
+				}
+						#giagiamcf{
+					font-family: 'cafe' !important;
+				}
+						#giamneu{
+					font-family: 'utm-neutra' !important;
+				}
+						h2{
+					font-family: 'bai-jamjuree' !important;
+				}
+						#tendtcf{
+					font-family: 'cafe' !important;
+				}
+						h4{
+					font-family: 'utm-avo' !important;
+				}
+						#cafe1{
+					font-family: 'cafe' !important;
+				}
+						#cafe2{
+					font-family: 'cafe' !important;
+				}
+						#cafe3{
+					font-family: 'cafe' !important;
+				}
+						#cafe4{
+					font-family: 'cafe' !important;
+				}
+						#cafe5{
+					font-family: 'cafe' !important;
+				}
+						#cafe6{
+					font-family: 'cafe' !important;
+				}
+		

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <title>VÒNG QUAY TIKTOK</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; display: flex; justify-content: center; }
+        .content { text-align: center; }
+        #result { margin-top: 20px; font-size: 24px; color: green; }
+        .participant { display: none; }
+        .winners { margin-left: 50px; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Vòng Quay Tiktok </h1>
+        <button onclick="draw()">Quay</button>
+        <div id="result"></div>
+    </div>
+
+    <div class="winners">
+        <h2>Danh Sách Quay Tiktok </h2>
+        <ul id="winnersList"></ul>
+    </div>
+
+    <div class="participant">Nguyễn Thị Anh Vân</div>
+    <div class="participant">Nguyễn Thị Lam</div>
+    <div class="participant">Đặng Thị Nga</div>
+    <div class="participant">Lê Thị Hoài Thương</div>
+	<div class="participant">Giang Oppo</div>
+    <div class="participant">Sang Home</div>
+    <div class="participant">Hằng Samsung</div>
+    <div class="participant">Linh Vivo</div>
+	<div class="participant">Thường Tecno</div>
+    <div class="participant">Nhi  Realme</div>
+    
+
+    <script>
+        const participants = Array.from(document.querySelectorAll('.participant')).map(p => p.textContent);
+        const winnersList = document.getElementById('winnersList');
+        let winners = [];
+
+        function draw() {
+            if (winners.length >= participants.length) {
+                document.getElementById('result').innerHTML = 'Tất cả người tham gia đã quay.';
+                return;
+            }
+
+            let winner;
+            do {
+                winner = participants[Math.floor(Math.random() * participants.length)];
+            } while (winners.includes(winner));
+
+            winners.push(winner);
+            document.getElementById('result').innerHTML = `Người tiếp theo là: ${winner}`;
+            const listItem = document.createElement('li');
+            listItem.textContent = winner;
+            winnersList.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>

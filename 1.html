@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quay Số Trúng Thưởng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .column {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            width: 30%;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        #matKhauForm {
+            display: none;
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #ddd;
+            z-index: 1000;
+        }
+        #popup img {
+            max-width: 200px;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quay Số Trúng Thưởng</h1>
+    <div class="container">
+        <div class="column">
+            <h2>Danh sách phần thưởng:</h2>
+            <ul id="menhGiaList"></ul>
+        </div>
+        <div class="column">
+            <h2>Bấm để nhận quà:</h2>
+            <form id="quaySoForm" onsubmit="return false;">
+                <input type="text" id="tenNguoiQuay" placeholder="Nhập tên của bạn">
+                <button type="button" onclick="quaySo()">Nhận Quà </button>
+            </form>
+            <form id="matKhauForm" onsubmit="return false;">
+                <input type="password" id="matKhau" placeholder="Nhập mật khẩu">
+                <button type="button" onclick="xacThuc()">Xác thực</button>
+            </form>
+        </div>
+        <div class="column">
+            <h2>Danh sách người trúng thưởng:</h2>
+            <ul id="lichSuList"></ul>
+        </div>
+    </div>
+    <div id="overlay"></div>
+<div id="popup">
+        <h2>Chúc mừng!</h2>
+        <p id="tenNguoiTrung"></p>
+        <img id="hinhAnhQuaTang" src="" alt="Hình ảnh quà tặng">
+        <br>
+        <button onclick="dongPopup()">Đóng</button>
+    <script>
+        const menhGiaTienVN = [
+            { prize: "1,000 VND", weight: 0.2 },
+            { prize: "2,000 VND", weight: 0.15 },
+            { prize: "5,000 VND", weight: 0.1 },
+            { prize: "10,000 VND", weight: 0.1 },
+            { prize: "20,000 VND", weight: 0.1 },
+            { prize: "50,000 VND", weight: 0.1 },
+            { prize: "100,000 VND", weight: 0.1 },
+            { prize: "200,000 VND", weight: 0.1 },
+            { prize: "500,000 VND", weight: 0.05 }
+        ];
+        const hinhAnhQuaTang = {
+            "1,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-17.jpg",
+            "2,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-15.jpg",
+            "5,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-13.jpg",
+            "10,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-11.jpg",
+            "20,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-09.jpg",
+            "50,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-07.jpg",
+            "100,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-03.jpg",
+            "200,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-03.jpg",
+            "500,000 VND": "https://www.sbv.gov.vn/webcenter/cs/groups/cucphathanhkhoquy/documents/noidungtinh/c2j2/mdcy/~edisp/~export/SBVWEBAPP01SBV072320~3/338348-01.jpg"
+        };
+        const lichSuTrungThuong = [];
+        const matKhau = "matkhau123"; // Mật khẩu để quay lại
+
+        function getWeightedRandomPrize() {
+            const totalWeight = menhGiaTienVN.reduce((sum, item) => sum + item.weight, 0);
+            const random = Math.random() * totalWeight;
+            let cumulativeWeight = 0;
+            for (const item of menhGiaTienVN) {
+                cumulativeWeight += item.weight;
+                if (random <= cumulativeWeight) {
+                    return item.prize;
+                }
+            }
+        }
+
+        function quaySo() {
+            const tenNguoiQuay = document.getElementById('tenNguoiQuay').value;
+            if (!tenNguoiQuay) {
+                alert("Vui lòng nhập tên của bạn.");
+                return;
+            }
+
+            if (localStorage.getItem('daQuaySo') === 'true') {
+                alert("Bạn đã quay số rồi. Vui lòng nhập mật khẩu để quay lại.");
+                document.getElementById('matKhauForm').style.display = 'block';
+                return;
+            }
+
+            const menhGiaTrung = getWeightedRandomPrize();
+            lichSuTrungThuong.push({ name: tenNguoiQuay, prize: menhGiaTrung });
+            hienThiLichSu();
+
+            // Hiển thị thông báo
+            document.getElementById('tenNguoiTrung').textContent = `${tenNguoiQuay} - ${menhGiaTrung}`;
+            document.getElementById('hinhAnhQuaTang').src = hinhAnhQuaTang[menhGiaTrung];
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+
+            localStorage.setItem('daQuaySo', 'true');
+        }
+
+        function hienThiDanhSach() {
+            const menhGiaList = document.getElementById('menhGiaList');
+            menhGiaList.innerHTML = '';
+            menhGiaTienVN.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.prize;
+                menhGiaList.appendChild(li);
+            });
+        }
+
+        function hienThiLichSu() {
+            const lichSuList = document.getElementById('lichSuList');
+            lichSuList.innerHTML = '';
+            lichSuTrungThuong.forEach(entry => {
+                const li = document.createElement('li');
+                li.textContent = `${entry.name} - ${entry.prize}`;
+                lichSuList.appendChild(li);
+            });
+        }
+
+        function xacThuc() {
+            const nhapMatKhau = document.getElementById('matKhau').value;
+            if (nhapMatKhau === matKhau) {
+                document.getElementById('matKhauForm').style.display = 'none';
+                localStorage.removeItem('daQuaySo');
+                alert("Bạn đã được phép quay lại.");
+            } else {
+                alert("Mật khẩu không chính xác.");
+            }
+        }
+
+        function dongPopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        window.onload = () => {
+            hienThiDanhSach();
+            if (localStorage.getItem('daQuaySo') === 'true') {
+                document.getElementById('matKhauForm').style.display = 'block';
+            }
+        };
+        </script>
+</div>
+
+    NGOCNH9 - Akaito 
+</body>
+</html>

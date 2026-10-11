@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Chúc Mừng 20/10</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .gift-box { 
+            width: 150px; 
+            height: 150px; 
+            background: url('https://sackim.com/wp-content/uploads/2022/04/mau-thiet-ke-hop-qua-vector-04.jpg') no-repeat center center; 
+            background-size: contain; 
+            display: inline-block; 
+            margin: 10px; 
+            cursor: pointer; 
+        }
+        .message { margin-top: 20px; font-size: 24px; color: green; display: none; }
+    .style1 {
+	color: #0000FF;
+	font-style: italic;
+}
+    .style2 {color: #FF0000}
+    </style>
+</head>
+
+<body>
+    <h1 class="style2">Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10!</h1>
+    <p>Nhấp vào hộp quà để nhận quà!</p>
+    <div class="gift-box" onclick="showMessage(0)"></div>
+    <div class="gift-box" onclick="showMessage(1)"></div>
+    <div class="gift-box" onclick="showMessage(2)"></div>
+	<div class="gift-box" onclick="showMessage(3)"></div>
+	<div class="gift-box" onclick="showMessage(4)"></div>
+    <div id="message0" class="message">Chúc mừng ngày 20/10, chúc chị em luôn tỏa sáng với vẻ đẹp rạng ngời và gặt hái nhiều thành công trong sự nghiệp</div>
+    <div id="message1" class="message">Nhân Ngày Phụ Nữ Việt Nam 20/10,  xin chúc chị em luôn mạnh khỏe, hạnh phúc và gặt hái được nhiều thành công trong công việc cũng như cuộc sống</div>
+    <div id="message2" class="message">20/10 này hãy cùng "tỏa sáng" và "bung lụa" nhé chị em! Chúc bạn luôn xinh đẹp, hạnh phúc và tràn đầy sức sống mỗi ngày!</div>
+<div id="message3" class="message">Tình cảm các đồng nghiệp trong công ty chúng ta dành cho nhau thế nào chỉ có chúng ta là người hiểu rõ nhất. Nhân ngày 20/10, các đấng mày râu chúng tôi xin gửi tới chị em lời chúc yêu thương, thành đạt và vui vẻ, xinh đẹp. Mừng ngày Phụ nữ Việt Nam. </div>
+<div id="message4" class="message">Thay mặt các anh em trong công ty, chúng tôi xin gửi tới chị em phụ nữ lời chúc sức khỏe, vui vẻ, hạnh phúc, trẻ trung, xinh đẹp nhất nhân ngày 20/10. Chúc các bạn luôn tỏa sáng trong ngày này. </div>
+<div id="message5" class="message">Nhân ngày 20/10, chúc bạn ngày càng xinh đẹp, tự tin và đạt được mọi mục tiêu mà bạn đặt ra trong công việc lẫn cuộc sống.</div>
+
+    <script>
+        function showMessage(index) {
+            document.querySelectorAll('.message').forEach(msg => msg.style.display = 'none');
+            document.getElementById('message' + index).style.display = 'block';
+        }
+    </script>
+	<center>
+	  <span class="style1">Ưng Hoàng Ngọc</span>
+	</center>
+</body>
+</html>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+
+<!-- tối ưu mobile -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chúc Mừng 8/3</title>
+
+<style>
+
+body{
+margin:0;
+overflow:hidden;
+font-family:Arial;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+text-align:center;
+color:white;
+padding:20px;
+}
+
+/* tiêu đề */
+
+h1{
+margin-top:20px;
+font-size:6vw;
+}
+
+h2{
+font-size:4.5vw;
+}
+
+/* tên công ty */
+
+.company{
+font-size:4vw;
+margin-top:10px;
+line-height:1.4;
+}
+
+/* lời chúc */
+
+.message-box{
+margin-top:25px;
+font-size:4.2vw;
+font-weight:bold;
+padding:10px;
+}
+
+/* hộp quà */
+
+.gift{
+font-size:22vw;
+cursor:pointer;
+margin-top:40px;
+transition:transform .2s;
+}
+
+/* hiệu ứng nhấn mobile */
+
+.gift:active{
+transform:scale(1.2);
+}
+
+/* icon rơi */
+
+.fall{
+position:absolute;
+top:-50px;
+font-size:24px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+/* pháo hoa */
+
+.firework{
+position:absolute;
+width:6px;
+height:6px;
+border-radius:50%;
+box-shadow:
+0 0 10px #fff,
+0 0 20px #ff0,
+0 0 30px #f0f,
+0 0 40px #0ff;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);}
+100%{transform:scale(25);opacity:0;}
+}
+
+/* màn hình lớn */
+
+@media(min-width:768px){
+
+h1{font-size:50px;}
+h2{font-size:28px;}
+.company{font-size:22px;}
+.message-box{font-size:26px;}
+.gift{font-size:120px;}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌸 Happy Women's Day 🌸</h1>
+<h2>08/03/2026</h2>
+
+<div class="company">
+VIETTEL STORE<br>
+NGHỆ AN
+</div>
+
+<h2>Nhấn vào hộp quà để nhận lời chúc 🎁</h2>
+
+<div class="gift" onclick="openGift()">🎁</div>
+
+<div class="message-box" id="message"></div>
+
+<script>
+
+/* danh sách lời chúc */
+
+const messages=[
+
+"Chúc các chị em 8/3 nhan sắc thăng hạng, công việc nhẹ nhàng, deadline tự tan biến và tiền vào như nước 💸💃✨",
+
+"Nhân ngày Quốc tế Phụ nữ, chúc các nữ đồng nghiệp luôn xinh đẹp, vui vẻ và thành công 🎀💎✨",
+
+"Chúc phái đẹp luôn rạng rỡ, hạnh phúc và nhận được thật nhiều yêu thương 🎁✨ Happy 8/3!",
+
+"Chúc chị/em 8/3 thật ý nghĩa, nhận được 'cơn mưa' hoa và quà 🌹🎁",
+
+"Chúc chị em hôm nay chỉ việc lên đồ thật xinh 👗 mọi việc cứ để anh em gánh team 🦾🚀",
+
+"Chúc mừng 8/3! Chúc các chị em luôn tràn năng lượng và niềm vui 🎊🌈"
+
+];
+
+/* mở hộp quà */
+
+function openGift(){
+
+const msg=messages[Math.floor(Math.random()*messages.length)];
+
+document.getElementById("message").innerHTML=msg;
+
+/* pháo hoa */
+
+for(let i=0;i<10;i++){
+setTimeout(firework,i*150);
+}
+
+}
+
+/* pháo hoa */
+
+function firework(){
+
+const fw=document.createElement("div");
+
+fw.className="firework";
+
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*60+"vh";
+
+document.body.appendChild(fw);
+
+setTimeout(()=>{fw.remove()},1000);
+
+}
+
+/* hoa + tim bay */
+
+function createFall(){
+
+const icons=["🌸","💖","🌹","💗"];
+
+const el=document.createElement("div");
+
+el.className="fall";
+
+el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+el.style.left=Math.random()*100+"vw";
+
+el.style.animationDuration=(Math.random()*3+3)+"s";
+
+document.body.appendChild(el);
+
+setTimeout(()=>{el.remove()},6000);
+
+}
+
+/* giảm tần suất để đỡ lag mobile */
+
+setInterval(createFall,500);
+
+</script>
+
+</body>
+</html>
+By Akaito
